@@ -77,7 +77,7 @@ remote_host: mirantis-lab
 remote_path: fuel-qa
 
 # name on iso in /home/<user>/iso/ folder
-iso_name: iso/MirantisOpenStack-7.0.iso
+iso_path: iso/MirantisOpenStack-7.0.iso
 
 # path of virtualenv (/home/<user>/fuel-devops-venv in this example)
 venv_path: fuel-devops-venv
