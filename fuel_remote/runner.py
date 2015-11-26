@@ -61,13 +61,13 @@ class Runner(object):
     def execute(self, command):
         if isinstance(command, (basestring)):
             command = [command]
-        if self.screen:
-            command = ['screen'] + command
         command = ' '.join(command)
         command_list = ['export %s' % ' '.join('%s=%s' % (k, v)
                         for k, v in self.envs.items())]
         command_list += ['cd {}'.format(self.remote_path)]
         command_list += [self.prepare_command(command)]
+        if self.screen:
+            command_list[-1] = 'screen ' + command_list[-1]
         command = "; ".join(x.replace(r"'", r"\'")
                             for x in command_list)
         command = "ssh -t {} '{}'".format(self.remote_host, command)
@@ -82,7 +82,8 @@ class Runner(object):
         self.sync()
         self.execute('source {0.venv_path}/bin/activate; bash'.format(self))
 
-    def run_test(self, test_group):
+    def test(self, groups):
         self.sync()
+        groups_string = ' '.join('--group={}'.format(x) for x in groups)
         self.execute('python fuelweb_test/run_tests.py -q --nologcapture '
-                     '--with-xunit --group={}'.format(test_group))
+                     '--with-xunit {}'.format(groups_string))

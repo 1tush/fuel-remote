@@ -44,8 +44,8 @@ def parse_args(config):
     parser_test = subparsers.add_parser(
         'test',
         help='Run test group on remote server')
-    parser_test.add_argument('group', nargs=argparse.REMAINDER,
-                             help="Test group to execute")
+    parser_test.add_argument('groups', nargs=argparse.REMAINDER,
+                             help="Test groups to execute")
 
     subparsers.add_parser('shell', help='Run bash on remote server')
 
