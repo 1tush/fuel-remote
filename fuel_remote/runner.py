@@ -33,7 +33,8 @@ class Runner(object):
             'ISO_PATH': self.iso_path,
             'VENV_PATH': self.venv_path,
             'PYTHONPATH': '${PYTHONPATH:+${PYTHONPATH}:}'
-                          '%s' % self.remote_path
+                          '%s' % self.remote_path,
+            'LOGS_DIR': '{}/logs'.format(self.remote_path)
         })
 
     def prepare_command(self, command):
