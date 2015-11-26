@@ -2,6 +2,8 @@ This package allow to run fuel qa tests on remote server without manual login to
 
 === INSTALLATION ==
 
+Prepare server - https://docs.fuel-infra.org/fuel-dev/devops.html (from 3.1 to 3.3)
+
 pip install git+https://github.com/1tush/fuel-remote.git
 
 === USAGE ===
