@@ -91,13 +91,13 @@ envs:
     ADMIN_NODE_MEMORY: 4096
 
     # if slaves doesn't boot ubuntu after install it (kernel panic)
-    DRIVER_USE_HOST_CPU: 'false'
+    # DRIVER_USE_HOST_CPU: 'false'
 
     # use KVM on slaves.
     # IMPORTANT :
     # - incompatible with previous setting
     # - nested padding should be turned ON
-    USE_KVM: 'false'
+    USE_KVM: 'true'
     """
 
     if os.path.exists(CONFIG_FILE_NAME) and os.path.isfile(CONFIG_FILE_NAME):
