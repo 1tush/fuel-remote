@@ -1,6 +1,12 @@
 This package allow to run fuel qa tests on remote server without manual login to it
 
-usage: rem [-h] [--host REMOTE_HOST] [--path REMOTE_PATH] [--venv VENV_PATH]
+=== INSTALLATION ==
+
+pip install git+https://github.com/1tush/fuel-remote.git
+
+=== USAGE ===
+
+rem [-h] [--host REMOTE_HOST] [--path REMOTE_PATH] [--venv VENV_PATH]
            [--iso-path ISO_PATH] [--ipython] [--screen]
            {init,sync,execute,test,shell} ...
 
