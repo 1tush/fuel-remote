@@ -68,7 +68,7 @@ class Runner(object):
                         for k, v in self.envs.items())]
         command_list += ['cd {}'.format(self.remote_path)]
         command_list += [self.prepare_command(command)]
-        command = "; ".join(x.replace(r"'", r"\'").replace(r';', r'\;')
+        command = "; ".join(x.replace(r"'", r"\'")
                             for x in command_list)
         command = "ssh -t {} '{}'".format(self.remote_host, command)
         logger.debug('Running command: \n{}'.format(command))
@@ -80,7 +80,7 @@ class Runner(object):
 
     def shell(self):
         self.sync()
-        self.execute('bash')
+        self.execute('source {0.venv_path}/bin/activate; bash'.format(self))
 
     def run_test(self, test_group):
         self.sync()

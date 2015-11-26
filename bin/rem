@@ -80,7 +80,7 @@ remote_path: fuel-qa
 iso_name: iso/MirantisOpenStack-7.0.iso
 
 # path of virtualenv (/home/<user>/fuel-devops-venv in this example)
-venv_name: fuel-devops-venv
+venv_path: fuel-devops-venv
 envs:
     # count of nodes
     NODES_COUNT: 7
