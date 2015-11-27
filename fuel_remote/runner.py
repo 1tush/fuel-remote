@@ -81,7 +81,7 @@ class Runner(object):
 
     def shell(self):
         self.sync()
-        self.execute('source {0.venv_path}/bin/activate; bash'.format(self))
+        self.execute('bash --init-file {0.venv_path}/bin/activate'.format(self))
 
     def test(self, groups):
         self.sync()
