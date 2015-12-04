@@ -48,10 +48,14 @@ class Runner(object):
     def sync(self):
         logger.debug('Run sync')
         excludes = [
-            '\.git/*',
-            'logs/*',
-            '*.pyc',
-            'ca.*',
+            r'\.git*',
+            r'logs/*',
+            r'*.pyc',
+            r'ca.*',
+            r'\.tox*',
+            r'*__pycache__*',
+            r'\.cache*',
+            r'doc/_build*',
         ]
         command = ['rsync']
         command += ["--exclude={}".format(x) for x in excludes]
@@ -68,7 +72,8 @@ class Runner(object):
         command_list += ['cd {}'.format(self.remote_path)]
         command_list += [self.prepare_command(command)]
         if self.screen:
-            command_list[-1] = 'screen ' + command_list[-1]
+            command_list[-1:] = ['rm screenlog.0',
+                                 'screen -L ' + command_list[-1]]
         command = "; ".join(x.replace(r"'", r"\'")
                             for x in command_list)
         command = "ssh -t {} '{}'".format(self.remote_host, command)
@@ -81,7 +86,8 @@ class Runner(object):
 
     def shell(self):
         self.sync()
-        self.execute('bash --init-file {0.venv_path}/bin/activate'.format(self))
+        self.execute('bash --init-file '
+                     '{0.venv_path}/bin/activate'.format(self))
 
     def test(self, groups):
         self.sync()
