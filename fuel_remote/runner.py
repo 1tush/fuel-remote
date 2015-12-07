@@ -56,10 +56,11 @@ class Runner(object):
             r'*__pycache__*',
             r'\.cache*',
             r'doc/_build*',
+            r'screenlog.*',
         ]
         command = ['rsync']
         command += ["--exclude={}".format(x) for x in excludes]
-        command += ['-avz', '.',
+        command += ['-avz', '--delete', '.',
                     '{0.remote_host}:{0.remote_path}'.format(self)]
         subprocess.call(command)
 
