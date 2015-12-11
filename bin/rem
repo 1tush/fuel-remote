@@ -47,6 +47,12 @@ def parse_args(config):
     parser_test.add_argument('groups', nargs=argparse.REMAINDER,
                              help="Test groups to execute")
 
+    parser_pytest = subparsers.add_parser(
+        'pytest',
+        help='Run pytest on remote server')
+    parser_pytest.add_argument('args', nargs=argparse.REMAINDER,
+                               help="pytest args")
+
     subparsers.add_parser('shell', help='Run bash on remote server')
 
     merged_config = vars(parser.parse_args())

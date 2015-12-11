@@ -95,3 +95,10 @@ class Runner(object):
         groups_string = ' '.join('--group={}'.format(x) for x in groups)
         self.execute('python fuelweb_test/run_tests.py -q --nologcapture '
                      '--with-xunit {}'.format(groups_string))
+
+    def pytest(self, args):
+        self.sync()
+        if args[0] == '--':
+            args = args[1:]
+        args_string = ' '.join(args)
+        self.execute('{}/bin/py.test {}'.format(self.venv_path, args_string))

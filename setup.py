@@ -4,7 +4,7 @@ from distutils.core import setup
 
 setup(
     name='fuel_remote',
-    version='0.1dev2',
+    version='0.1dev3',
     description='Run fuel-qa tests remote',
     author='Georgy Dyuldin',
     author_email='g.dyuldin@gmail.com',
