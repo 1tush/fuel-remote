@@ -50,6 +50,7 @@ class Runner(object):
         excludes = [
             r'\.git*',
             r'logs/*',
+            r'*.log',
             r'*.pyc',
             r'ca.*',
             r'\.tox*',
